@@ -1,4 +1,27 @@
 const pianoContainer = document.querySelector('.piano');
+const pianoKeys = Array.from(document.querySelectorAll('.piano-key'));
+
+const keys = pianoKeys.map(({dataset}) => {
+    const {letter, note} = dataset;
+    if (!letter) return false;
+    const code = `Key${letter}`;
+    return {
+        note,
+        code
+    };
+}).filter((item) => (
+    typeof item !== 'boolean'
+));
+
+const audios = new Map();
+const notes = [
+    'a', 'a♯', 'b', 'c', 'c♯', 'd', 'd♯', 'e', 'f', 'f♯', 'g', 'g♯'
+];
+
+notes.forEach((note) => {
+    const url = createUrl(note);
+    audios.set(note, createAudio(url));
+});
 
 function createUrl(fileName) {
     return `./assets/audio/${fileName}.mp3`;
@@ -10,29 +33,20 @@ function createAudio(url) {
     return audio;
 }
 
-function audioWrapper() {
-    const audios = new Map();
-
-    return function (url) {
-        if (audios.has(url)) {
-            const audio = audios.get(url);
-            audio.currentTime = 0;
-            audio.play();
-        } else {
-            const audio = createAudio(url);
-            audios.set(url, audio);
-            audio.play();
-        }
-    }
+function play(note) {
+    const audio = audios.get(note);
+    audio.currentTime = 0;
+    audio.play();
 }
-
-const play = audioWrapper();
 
 pianoContainer.addEventListener('click', (e) => {
     const element = e.target;
-    const fileName = element.dataset.note;
-    if (fileName) {
-        const url = createUrl(fileName);
-        play(url);
-    }
+    const note = element.dataset.note;
+    if (note) play(note);
+});
+
+window.addEventListener('keydown', (event) => {
+    const code = event.code;
+    const { note } = keys.find((item) => item.code === code);
+    if (note) play(note);
 });
