@@ -1,1 +1,161 @@
-const _0x8ea9=['93266datsju','.fullscreen','classList','1143381fQtoeb','querySelector','819280eFTcPs','71CCqWLu','.mp3','src','charCodeAt','querySelectorAll','piano-key-letter','20727pVIQiS','mousedown','6iRxPVM','note','add','393053Oopbao','mouseup','.btn-notes','addEventListener','btn-active','audio','dataset','keyCode','assets/audio/','635971uMehHZ','keydown','play','piano-key-active-pseudo','createElement','piano-key-active','forEach','mouseover','.piano-key','click','1042533ODlRsD','letter','mouseout','piano-key-remove-mouse','srcElement','remove','div'];const _0x9f79=function(_0x374479,_0x3f7924){_0x374479=_0x374479-0x12b;let _0x8ea950=_0x8ea9[_0x374479];return _0x8ea950;};const _0x4b1b64=_0x9f79;(function(_0xe3846b,_0x2e9cd6){const _0x2e7078=_0x9f79;while(!![]){try{const _0x3dd9cc=parseInt(_0x2e7078(0x14f))+-parseInt(_0x2e7078(0x12e))+-parseInt(_0x2e7078(0x135))*-parseInt(_0x2e7078(0x143))+-parseInt(_0x2e7078(0x138))+-parseInt(_0x2e7078(0x146))+parseInt(_0x2e7078(0x13a))+-parseInt(_0x2e7078(0x141))*-parseInt(_0x2e7078(0x13b));if(_0x3dd9cc===_0x2e9cd6)break;else _0xe3846b['push'](_0xe3846b['shift']());}catch(_0x10e288){_0xe3846b['push'](_0xe3846b['shift']());}}}(_0x8ea9,0xdd8e9));let object={};for(let i=0x43;i<0x56;i++){object[i]=![];}function playSound(_0x2352e5){const _0x42ee86=_0x9f79;if(object[_0x2352e5[_0x42ee86(0x14d)]]==!![])return;object[_0x2352e5[_0x42ee86(0x14d)]]=!![];let _0x1f0c9a=document[_0x42ee86(0x13f)](_0x42ee86(0x134)),_0xe23b2=null;_0x1f0c9a[_0x42ee86(0x155)](_0x5b116a=>{const _0x441282=_0x42ee86;if(!_0x5b116a[_0x441282(0x14c)][_0x441282(0x12f)])return;if(_0x5b116a[_0x441282(0x14c)][_0x441282(0x12f)][_0x441282(0x13e)](0x0)==_0x2352e5[_0x441282(0x14d)])_0xe23b2=_0x5b116a;});const _0x26e130=document[_0x42ee86(0x153)](_0x42ee86(0x14b));if(!_0xe23b2)return;_0xe23b2[_0x42ee86(0x137)][_0x42ee86(0x145)]('piano-key-active'),_0xe23b2[_0x42ee86(0x137)][_0x42ee86(0x133)](_0x42ee86(0x131)),_0x26e130['src']=_0x42ee86(0x14e)+_0xe23b2[_0x42ee86(0x14c)][_0x42ee86(0x144)]+_0x42ee86(0x13c),_0x26e130['play']();}function playClickSound(_0x5862fd){const _0x52cfa3=_0x9f79;_0x5862fd[_0x52cfa3(0x132)][_0x52cfa3(0x137)]['add'](_0x52cfa3(0x154)),_0x5862fd[_0x52cfa3(0x132)]['classList'][_0x52cfa3(0x133)](_0x52cfa3(0x131)),_0x5862fd[_0x52cfa3(0x132)]['classList'][_0x52cfa3(0x145)](_0x52cfa3(0x152));const _0x2c28c3=document[_0x52cfa3(0x153)]('audio');_0x2c28c3[_0x52cfa3(0x13d)]=_0x52cfa3(0x14e)+_0x5862fd[_0x52cfa3(0x132)][_0x52cfa3(0x14c)][_0x52cfa3(0x144)]+'.mp3',_0x2c28c3[_0x52cfa3(0x151)]();}function addHoverPlaySound(){const _0x3604dc=_0x9f79,_0x44b8bd=document['querySelectorAll'](_0x3604dc(0x12c));_0x44b8bd[_0x3604dc(0x155)](_0x276a13=>{const _0xd07d66=_0x3604dc;_0x276a13[_0xd07d66(0x149)]('mouseover',playClickSound);});}function removeHoverPlaySound(){const _0x16e414=document['querySelectorAll']('.piano-key');_0x16e414['forEach'](_0x11356d=>{const _0x137464=_0x9f79;_0x11356d['removeEventListener'](_0x137464(0x12b),playClickSound);});}function removeTransitionButton(_0x1429ba){const _0x11ab14=_0x9f79;let _0x3920cf=document[_0x11ab14(0x13f)](_0x11ab14(0x134)),_0x3dc47a=null;_0x3920cf[_0x11ab14(0x155)](_0x5f42f=>{const _0x76e906=_0x11ab14;if(!_0x5f42f['dataset'][_0x76e906(0x12f)])return;if(_0x5f42f[_0x76e906(0x14c)][_0x76e906(0x12f)][_0x76e906(0x13e)](0x0)==_0x1429ba['keyCode'])_0x3dc47a=_0x5f42f;});if(!_0x3dc47a)return;_0x3dc47a[_0x11ab14(0x137)][_0x11ab14(0x133)](_0x11ab14(0x154)),_0x3dc47a[_0x11ab14(0x137)]['remove'](_0x11ab14(0x154)),object[_0x1429ba[_0x11ab14(0x14d)]]=![];}function removeTransition(){const _0x3a1f14=_0x9f79;this[_0x3a1f14(0x137)][_0x3a1f14(0x133)](_0x3a1f14(0x154)),this[_0x3a1f14(0x137)][_0x3a1f14(0x145)](_0x3a1f14(0x131)),this[_0x3a1f14(0x137)]['remove'](_0x3a1f14(0x152));}window[_0x4b1b64(0x149)](_0x4b1b64(0x150),playSound),window[_0x4b1b64(0x149)]('keyup',removeTransitionButton);const div=document[_0x4b1b64(0x13f)]('.piano-key');div['forEach'](_0x360faf=>{const _0x5f07a5=_0x4b1b64;_0x360faf[_0x5f07a5(0x149)](_0x5f07a5(0x142),playClickSound),_0x360faf[_0x5f07a5(0x149)](_0x5f07a5(0x130),removeTransition),_0x360faf['addEventListener'](_0x5f07a5(0x147),removeTransition),_0x360faf[_0x5f07a5(0x149)](_0x5f07a5(0x142),addHoverPlaySound),document[_0x5f07a5(0x149)]('mouseup',removeHoverPlaySound);});let btnLetters=document[_0x4b1b64(0x139)]('.btn-letters'),btnNotes=document[_0x4b1b64(0x139)](_0x4b1b64(0x148));btnLetters[_0x4b1b64(0x149)](_0x4b1b64(0x12d),()=>{const _0x21e301=_0x4b1b64;document['querySelectorAll'](_0x21e301(0x12c))[_0x21e301(0x155)](_0x206bfc=>_0x206bfc['classList'][_0x21e301(0x145)](_0x21e301(0x140))),btnNotes[_0x21e301(0x137)]['remove']('btn-active'),btnLetters[_0x21e301(0x137)][_0x21e301(0x145)](_0x21e301(0x14a));}),btnNotes[_0x4b1b64(0x149)]('click',()=>{const _0x1c0d5f=_0x4b1b64;document[_0x1c0d5f(0x13f)](_0x1c0d5f(0x12c))['forEach'](_0x3a7823=>_0x3a7823[_0x1c0d5f(0x137)][_0x1c0d5f(0x133)]('piano-key-letter')),btnLetters['classList'][_0x1c0d5f(0x133)](_0x1c0d5f(0x14a)),btnNotes['classList']['add'](_0x1c0d5f(0x14a));});function toggleFullScreen(){document['fullscreenElement']?document['exitFullscreen']():document['documentElement']['requestFullscreen']();}let fullScreenItem=document[_0x4b1b64(0x139)](_0x4b1b64(0x136));fullScreenItem['addEventListener'](_0x4b1b64(0x12d),toggleFullScreen);
+const pianoContainer = document.querySelector('.piano');
+const pianoKeys = Array.from(document.querySelectorAll('.piano-key'));
+const btnContainer = document.querySelector('.btn-container');
+const btnNotes = document.querySelector('.btn-notes');
+const btnLetters = document.querySelector('.btn-letters');
+const fullscreen = document.querySelector('.fullscreen');
+
+const ACTIVE_NOTE_CLASS = 'piano-key-active';
+
+const activeNotes = new Set();
+const state = {
+    mousePressed: false,
+    isCurrentTabLetter: false
+}
+
+const keys = pianoKeys.map(({dataset}) => {
+    const {letter, note} = dataset;
+    if (!letter) return false;
+    const code = `Key${letter}`;
+    return {
+        note,
+        code
+    };
+}).filter((item) => (
+    typeof item !== 'boolean'
+));
+
+const play = playWrapper();
+
+function playWrapper() {
+    const audios = new Map();
+    const notes = [
+        'a', 'a♯', 'b', 'c', 'c♯', 'd', 'd♯', 'e', 'f', 'f♯', 'g', 'g♯'
+    ];
+
+    notes.forEach((note) => {
+        const url = `./assets/audio/${note}.mp3`;
+        audios.set(note, createAudio(url));
+    });
+
+    return function (note) {
+        const audio = audios.get(note);
+        audio.currentTime = 0;
+        audio.play();
+    }
+}
+
+function createAudio(url) {
+    const audio = new Audio(url);
+    audio.currentTime = 0;
+    return audio;
+}
+
+function findKeyCode(keys, code) {
+    const result = keys.find((item) => (
+        item.code === code
+    ));
+    return result || false;
+}
+
+window.addEventListener('mousedown', (e) => {
+    state.mousePressed = true;
+    const { note } = e.target.dataset;
+    if (note) {
+        const currentNote = document.getElementById(note);
+        if (!currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
+            currentNote.classList.add(ACTIVE_NOTE_CLASS);
+        }
+        play(note);
+    }
+});
+window.addEventListener('mouseup', (e) => {
+    state.mousePressed = false;
+    const { note } = e.target.dataset;
+    if (note) {
+        const currentNote = document.getElementById(note);
+        if (currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
+            currentNote.classList.remove(ACTIVE_NOTE_CLASS);
+        }
+    }
+});
+pianoContainer.addEventListener('mouseover', (e) => {
+    if (state.mousePressed) {
+        const { note } = e.target.dataset;
+        if (note) {
+            const currentNote = document.getElementById(note);
+            if (!currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
+                currentNote.classList.add(ACTIVE_NOTE_CLASS);
+            }
+            play(note);
+        }
+    }
+});
+pianoContainer.addEventListener('mouseout', (e) => {
+    if (state.mousePressed) {
+        const { note } = e.target.dataset;
+        if (note) {
+            const currentNote = document.getElementById(note);
+            if (currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
+                currentNote.classList.remove(ACTIVE_NOTE_CLASS);
+            }
+        }
+    }
+});
+
+window.addEventListener('keydown', (event) => {
+    if (event.repeat) return;
+    const code = event.code;
+    const key = findKeyCode(keys, code);
+    if (key) {
+        const { note } = key;
+        if (!activeNotes.has(note)) {
+            play(note);
+            const noteElement = document.getElementById(note);
+            noteElement.classList.add(ACTIVE_NOTE_CLASS);
+            activeNotes.add(note);
+        }
+    }
+});
+
+window.addEventListener('keyup', (event) => {
+    const code = event.code;
+    const key = findKeyCode(keys, code);
+    if (key) {
+        const { note } = key;
+        if (activeNotes.has(note)) {
+            const noteElement = document.getElementById(note);
+            noteElement.classList.remove(ACTIVE_NOTE_CLASS);
+            activeNotes.delete(note);
+        }
+    }
+})
+
+btnContainer.addEventListener('click', (e) => {
+    btnLetters.classList.remove('btn-active');
+    btnNotes.classList.remove('btn-active');
+    const button = e.target;
+    state.isCurrentTabLetter = button.classList.contains('btn-letters');
+    button.classList.add('btn-active');
+    if (state.isCurrentTabLetter) {
+        if (!pianoKeys[0].classList.contains('piano-key-letter')) {
+            pianoKeys.forEach((item) => {
+                item.classList.add('piano-key-letter')
+            })
+        }
+    } else {
+        if (pianoKeys[0].classList.contains('piano-key-letter')) {
+            pianoKeys.forEach((item) => {
+                item.classList.remove('piano-key-letter')
+            })
+        }
+    }
+})
+
+fullscreen.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+})
