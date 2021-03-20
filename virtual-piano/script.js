@@ -8,6 +8,7 @@ const fullscreen = document.querySelector('.fullscreen');
 const ACTIVE_NOTE_CLASS = 'piano-key-active';
 
 const activeNotes = new Set();
+let mousePressed = false;
 
 const keys = pianoKeys.map(({dataset}) => {
     const {letter, note} = dataset;
@@ -54,10 +55,49 @@ function findKey(keys, key) {
     return result || false;
 }
 
-pianoContainer.addEventListener('click', (e) => {
-    const element = e.target;
-    const note = element.dataset.note;
-    if (note) play(note);
+window.addEventListener('mousedown', (e) => {
+    mousePressed = true;
+    const { note } = e.target.dataset;
+    if (note) {
+        const currentNote = document.getElementById(note);
+        if (!currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
+            currentNote.classList.add(ACTIVE_NOTE_CLASS);
+        }
+        play(note);
+    }
+});
+window.addEventListener('mouseup', (e) => {
+    mousePressed = false;
+    const { note } = e.target.dataset;
+    if (note) {
+        const currentNote = document.getElementById(note);
+        if (currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
+            currentNote.classList.remove(ACTIVE_NOTE_CLASS);
+        }
+    }
+});
+pianoContainer.addEventListener('mouseover', (e) => {
+    if (mousePressed) {
+        const { note } = e.target.dataset;
+        if (note) {
+            const currentNote = document.getElementById(note);
+            if (!currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
+                currentNote.classList.add(ACTIVE_NOTE_CLASS);
+            }
+            play(note);
+        }
+    }
+});
+pianoContainer.addEventListener('mouseout', (e) => {
+    if (mousePressed) {
+        const { note } = e.target.dataset;
+        if (note) {
+            const currentNote = document.getElementById(note);
+            if (currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
+                currentNote.classList.remove(ACTIVE_NOTE_CLASS);
+            }
+        }
+    }
 });
 
 window.addEventListener('keydown', (event) => {
