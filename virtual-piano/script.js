@@ -5,7 +5,8 @@ const btnNotes = document.querySelector('.btn-notes');
 const btnLetters = document.querySelector('.btn-letters');
 const fullscreen = document.querySelector('.fullscreen');
 
-const ACTIVE_NOTE_CLASS = 'piano-key-active';
+const PIANO_KEY_ACTIVE = 'piano-key-active';
+const PIANO_KEY_ACTIVE_PSEUDO = 'piano-key-active-pseudo';
 
 const activeNotes = new Set();
 const state = {
@@ -63,8 +64,8 @@ window.addEventListener('mousedown', (e) => {
     const { note } = e.target.dataset;
     if (note) {
         const currentNote = document.getElementById(note);
-        if (!currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
-            currentNote.classList.add(ACTIVE_NOTE_CLASS);
+        if (!currentNote.classList.contains(PIANO_KEY_ACTIVE)) {
+            currentNote.classList.add(PIANO_KEY_ACTIVE, PIANO_KEY_ACTIVE_PSEUDO);
         }
         play(note);
     }
@@ -74,8 +75,8 @@ window.addEventListener('mouseup', (e) => {
     const { note } = e.target.dataset;
     if (note) {
         const currentNote = document.getElementById(note);
-        if (currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
-            currentNote.classList.remove(ACTIVE_NOTE_CLASS);
+        if (currentNote.classList.contains(PIANO_KEY_ACTIVE)) {
+            currentNote.classList.remove(PIANO_KEY_ACTIVE, PIANO_KEY_ACTIVE_PSEUDO);
         }
     }
 });
@@ -84,8 +85,8 @@ pianoContainer.addEventListener('mouseover', (e) => {
         const { note } = e.target.dataset;
         if (note) {
             const currentNote = document.getElementById(note);
-            if (!currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
-                currentNote.classList.add(ACTIVE_NOTE_CLASS);
+            if (!currentNote.classList.contains(PIANO_KEY_ACTIVE)) {
+                currentNote.classList.add(PIANO_KEY_ACTIVE, PIANO_KEY_ACTIVE_PSEUDO);
             }
             play(note);
         }
@@ -96,8 +97,8 @@ pianoContainer.addEventListener('mouseout', (e) => {
         const { note } = e.target.dataset;
         if (note) {
             const currentNote = document.getElementById(note);
-            if (currentNote.classList.contains(ACTIVE_NOTE_CLASS)) {
-                currentNote.classList.remove(ACTIVE_NOTE_CLASS);
+            if (currentNote.classList.contains(PIANO_KEY_ACTIVE)) {
+                currentNote.classList.remove(PIANO_KEY_ACTIVE, PIANO_KEY_ACTIVE_PSEUDO);
             }
         }
     }
@@ -112,7 +113,7 @@ window.addEventListener('keydown', (event) => {
         if (!activeNotes.has(note)) {
             play(note);
             const noteElement = document.getElementById(note);
-            noteElement.classList.add(ACTIVE_NOTE_CLASS);
+            noteElement.classList.add(PIANO_KEY_ACTIVE);
             activeNotes.add(note);
         }
     }
@@ -125,7 +126,7 @@ window.addEventListener('keyup', (event) => {
         const { note } = key;
         if (activeNotes.has(note)) {
             const noteElement = document.getElementById(note);
-            noteElement.classList.remove(ACTIVE_NOTE_CLASS);
+            noteElement.classList.remove(PIANO_KEY_ACTIVE);
             activeNotes.delete(note);
         }
     }
