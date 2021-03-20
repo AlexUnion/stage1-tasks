@@ -8,7 +8,10 @@ const fullscreen = document.querySelector('.fullscreen');
 const ACTIVE_NOTE_CLASS = 'piano-key-active';
 
 const activeNotes = new Set();
-let mousePressed = false;
+const state = {
+    mousePressed: false,
+    isCurrentTabLetter: false
+}
 
 const keys = pianoKeys.map(({dataset}) => {
     const {letter, note} = dataset;
@@ -22,30 +25,30 @@ const keys = pianoKeys.map(({dataset}) => {
     typeof item !== 'boolean'
 ));
 
-const audios = new Map();
-const notes = [
-    'a', 'a♯', 'b', 'c', 'c♯', 'd', 'd♯', 'e', 'f', 'f♯', 'g', 'g♯'
-];
+const play = playWrapper();
 
-notes.forEach((note) => {
-    const url = createUrl(note);
-    audios.set(note, createAudio(url));
-});
+function playWrapper() {
+    const audios = new Map();
+    const notes = [
+        'a', 'a♯', 'b', 'c', 'c♯', 'd', 'd♯', 'e', 'f', 'f♯', 'g', 'g♯'
+    ];
 
-function createUrl(fileName) {
-    return `./assets/audio/${fileName}.mp3`;
+    notes.forEach((note) => {
+        const url = `./assets/audio/${note}.mp3`;
+        audios.set(note, createAudio(url));
+    });
+
+    return function (note) {
+        const audio = audios.get(note);
+        audio.currentTime = 0;
+        audio.play();
+    }
 }
 
 function createAudio(url) {
     const audio = new Audio(url);
     audio.currentTime = 0;
     return audio;
-}
-
-function play(note) {
-    const audio = audios.get(note);
-    audio.currentTime = 0;
-    audio.play();
 }
 
 function findKey(keys, key) {
@@ -56,7 +59,7 @@ function findKey(keys, key) {
 }
 
 window.addEventListener('mousedown', (e) => {
-    mousePressed = true;
+    state.mousePressed = true;
     const { note } = e.target.dataset;
     if (note) {
         const currentNote = document.getElementById(note);
@@ -67,7 +70,7 @@ window.addEventListener('mousedown', (e) => {
     }
 });
 window.addEventListener('mouseup', (e) => {
-    mousePressed = false;
+    state.mousePressed = false;
     const { note } = e.target.dataset;
     if (note) {
         const currentNote = document.getElementById(note);
@@ -77,7 +80,7 @@ window.addEventListener('mouseup', (e) => {
     }
 });
 pianoContainer.addEventListener('mouseover', (e) => {
-    if (mousePressed) {
+    if (state.mousePressed) {
         const { note } = e.target.dataset;
         if (note) {
             const currentNote = document.getElementById(note);
@@ -89,7 +92,7 @@ pianoContainer.addEventListener('mouseover', (e) => {
     }
 });
 pianoContainer.addEventListener('mouseout', (e) => {
-    if (mousePressed) {
+    if (state.mousePressed) {
         const { note } = e.target.dataset;
         if (note) {
             const currentNote = document.getElementById(note);
