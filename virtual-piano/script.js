@@ -1,5 +1,13 @@
 const pianoContainer = document.querySelector('.piano');
 const pianoKeys = Array.from(document.querySelectorAll('.piano-key'));
+const btnContainer = document.querySelector('.btn-container');
+const btnNotes = document.querySelector('.btn-notes');
+const btnLetters = document.querySelector('.btn-letters');
+const fullscreen = document.querySelector('.fullscreen');
+
+const ACTIVE_NOTE_CLASS = 'piano-key-active';
+
+const activeNotes = new Set();
 
 const keys = pianoKeys.map(({dataset}) => {
     const {letter, note} = dataset;
@@ -39,6 +47,13 @@ function play(note) {
     audio.play();
 }
 
+function findKey(keys, key) {
+    const result = keys.find((item) => (
+        item.code === key
+    ));
+    return result || false;
+}
+
 pianoContainer.addEventListener('click', (e) => {
     const element = e.target;
     const note = element.dataset.note;
@@ -46,7 +61,44 @@ pianoContainer.addEventListener('click', (e) => {
 });
 
 window.addEventListener('keydown', (event) => {
+    if (event.repeat) return;
     const code = event.code;
-    const { note } = keys.find((item) => item.code === code);
-    if (note) play(note);
+    const key = findKey(keys, code);
+    if (key) {
+        const { note } = key;
+        if (!activeNotes.has(note)) {
+            play(note);
+            const noteElement = document.getElementById(note);
+            noteElement.classList.add(ACTIVE_NOTE_CLASS);
+            activeNotes.add(note);
+        }
+    }
 });
+
+window.addEventListener('keyup', (event) => {
+    const code = event.code;
+    const key = findKey(keys, code);
+    if (key) {
+        const { note } = key;
+        if (activeNotes.has(note)) {
+            const noteElement = document.getElementById(note);
+            noteElement.classList.remove(ACTIVE_NOTE_CLASS);
+            activeNotes.delete(note);
+        }
+    }
+})
+
+btnContainer.addEventListener('click', (e) => {
+    btnLetters.classList.remove('btn-active');
+    btnNotes.classList.remove('btn-active');
+    const button = e.target;
+    button.classList.add('btn-active');
+})
+
+fullscreen.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+})
