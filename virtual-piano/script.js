@@ -51,9 +51,9 @@ function createAudio(url) {
     return audio;
 }
 
-function findKey(keys, key) {
+function findKeyCode(keys, code) {
     const result = keys.find((item) => (
-        item.code === key
+        item.code === code
     ));
     return result || false;
 }
@@ -106,7 +106,7 @@ pianoContainer.addEventListener('mouseout', (e) => {
 window.addEventListener('keydown', (event) => {
     if (event.repeat) return;
     const code = event.code;
-    const key = findKey(keys, code);
+    const key = findKeyCode(keys, code);
     if (key) {
         const { note } = key;
         if (!activeNotes.has(note)) {
@@ -120,7 +120,7 @@ window.addEventListener('keydown', (event) => {
 
 window.addEventListener('keyup', (event) => {
     const code = event.code;
-    const key = findKey(keys, code);
+    const key = findKeyCode(keys, code);
     if (key) {
         const { note } = key;
         if (activeNotes.has(note)) {
@@ -135,7 +135,21 @@ btnContainer.addEventListener('click', (e) => {
     btnLetters.classList.remove('btn-active');
     btnNotes.classList.remove('btn-active');
     const button = e.target;
+    state.isCurrentTabLetter = button.classList.contains('btn-letters');
     button.classList.add('btn-active');
+    if (state.isCurrentTabLetter) {
+        if (!pianoKeys[0].classList.contains('piano-key-letter')) {
+            pianoKeys.forEach((item) => {
+                item.classList.add('piano-key-letter')
+            })
+        }
+    } else {
+        if (pianoKeys[0].classList.contains('piano-key-letter')) {
+            pianoKeys.forEach((item) => {
+                item.classList.remove('piano-key-letter')
+            })
+        }
+    }
 })
 
 fullscreen.addEventListener('click', () => {
